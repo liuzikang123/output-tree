@@ -7,7 +7,8 @@ function readFileTree(options = {}) {
         name = 'name',
         children = 'children',
         depth = Infinity,
-        path: pathStr = __dirname
+        path: pathStr = __dirname,
+        excludes = []
     } = options
     const files = []
 
@@ -16,6 +17,15 @@ function readFileTree(options = {}) {
         if ((depth < level) && (depth !== Infinity)) return
         const result = fs.readdirSync(pathStr)
         result.forEach((item, index) => {
+            const flag = excludes.some(rule => {
+                if (new RegExp(`\\${rule}$`).test(item) || (rule === item)) {
+                    return true
+                }
+                return false
+            })
+            if (flag) {
+                return
+            }
             const statResult = fs.statSync(path.resolve(pathStr, item))
             const fileStat = {
                 [name]: item,

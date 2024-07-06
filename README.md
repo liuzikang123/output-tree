@@ -144,6 +144,8 @@ console.log(result)
 | children | 否      | string | children的key值     | 'children'    |
 | template | 否      | string | 自定义模板     | '{name}'    |
 | depth    | 否      | number | 输出的层级有多深，默认无限深     | Infinity    |
+| excludes    | 否       | array | ['.js', '.css', 'node_modules'] 需要忽略的后缀名或者是文件夹名称     | []    |
+
 
 
 
@@ -200,6 +202,7 @@ const tree = readFileTree({
 | children | 否      | string | children的key值     | 'children'    |
 | depth    | 否      | number | 读取的文件层级有多深，默认无限深     | Infinity    |
 | path    | 否       | string | 读取文件的路径,需要绝对路径     | __dirname    |
+| excludes    | 否       | array | ['.js', '.css', 'node_modules'] 需要忽略的后缀名或者是文件夹名称     | []    |
 
 
 ## 结合使用

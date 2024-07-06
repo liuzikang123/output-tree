@@ -5,7 +5,8 @@ function outputTree(options = {}) {
         name = 'name',
         children = 'children',
         depth = Infinity,
-        template = `{${name}}`
+        template = `{${name}}`,
+        excludes = []
     } = options
 
     if (typeof data !== 'object' && data !== null) {
@@ -25,6 +26,15 @@ function outputTree(options = {}) {
         depth = depth < 1 ? 1 : depth
         if ((depth < level) && (depth !== Infinity)) return
         data.forEach((item, index) => {
+            const flag = excludes.some(rule => {
+                if (new RegExp(`\\${rule}$`).test(item[name]) || (rule === item[name])) {
+                    return true
+                }
+                return false
+            })
+            if (flag) {
+                return
+            }
             let len = item[children]?.length
             let defaultSymobl = '│   '.repeat(level - 1)
             let symbol = index !== (data.length - 1) ? '├─' : '└─'
