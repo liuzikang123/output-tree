@@ -1,0 +1,10 @@
+{
+  "name": "output-tree",
+  "version": "1.0.2",
+  "description": "支持将树状结构输出为字符串目录,支持读取本地目录输出为树状结构",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": ["console", "print", "output", "tree"],
+  "author": "",
+  "license": "MIT"
+}
