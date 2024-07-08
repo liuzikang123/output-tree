@@ -6,9 +6,10 @@ function outputTree(options = {}) {
         children = 'children',
         depth = Infinity,
         template = `{${name}}`,
-        excludes = []
+        excludes = [],
+        indent = 2
     } = options
-
+    
     if (typeof data !== 'object' && data !== null) {
         data = []
     } else if (!Array.isArray(data)) {
@@ -36,8 +37,15 @@ function outputTree(options = {}) {
                 return
             }
             let len = item[children]?.length
-            let defaultSymobl = '│   '.repeat(level - 1)
-            let symbol = index !== (data.length - 1) ? '├─' : '└─'
+            let defaultSymobl = `│${' '.repeat(indent)}`.repeat(level - 1)
+            let symbol = ''
+            if (data.length === 1 && level === 1) {
+                symbol = ''
+            } else if (data.length > 1 && level === 1) {
+                symbol = '├─'
+            } else {
+                symbol = index === (data.length - 1) && !len ? '└─' : '├─'
+            }
             let count = 0
             let result = template.replace(reg2, () => {
                 const data = item[attrs[count++]]
