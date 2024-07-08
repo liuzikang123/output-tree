@@ -1,6 +1,6 @@
 {
   "name": "output-tree",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "支持将树状结构输出为字符串目录,支持读取本地目录输出为树状结构",
   "main": "index.js",
   "repository": "https://github.com/liuzikang123/output-tree",
