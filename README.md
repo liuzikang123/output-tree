@@ -145,7 +145,7 @@ console.log(result)
 | template | 否      | string | 自定义模板     | '{name}'    |
 | depth    | 否      | number | 输出的层级有多深，默认无限深     | Infinity    |
 | excludes    | 否       | array | ['.js', '.css', 'node_modules'] 需要忽略的后缀名或者是文件夹名称     | []    |
-| indent    | 否      | number | 缩进，符号与文字的间隔     | 2    |
+| indent    | 否      | number | 缩进，符号之间的间隔     | 2    |
 
 
 
